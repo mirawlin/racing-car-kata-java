@@ -11,7 +11,7 @@ public class TelemetryDiagnosticControlsTest {
     @Test
     public void CheckTransmission_should_send_a_diagnostic_message_and_receive_a_status_message_response() throws Exception {
         // GIVEN
-        var telemetryClient = mock(TelemetryClient.class);
+        var telemetryClient = mock(ITelemetryClient.class);
         when(telemetryClient.getOnlineStatus()).thenReturn(true);
 
         var diagnosticControls = new TelemetryDiagnosticControls(telemetryClient);
@@ -27,7 +27,7 @@ public class TelemetryDiagnosticControlsTest {
     @Test
     public void CheckTransmission_should_disconnect_and_throw_an_exception_when_getOnlineStatus_is_false() throws Exception {
         // GIVEN
-        var telemetryClient = mock(TelemetryClient.class);
+        var telemetryClient = mock(ITelemetryClient.class);
         when(telemetryClient.getOnlineStatus()).thenReturn(false);
 
         var diagnosticControls = new TelemetryDiagnosticControls(telemetryClient);
@@ -43,7 +43,7 @@ public class TelemetryDiagnosticControlsTest {
     @Test
     public void CheckTransmission_should_disconnect_and_reconnect_when_getOnlineStatus_is_false_then_true() throws Exception {
         // GIVEN
-        var telemetryClient = mock(TelemetryClient.class);
+        var telemetryClient = mock(ITelemetryClient.class);
         doReturn(false).doReturn(true).when(telemetryClient).getOnlineStatus();
 
         var diagnosticControls = new TelemetryDiagnosticControls(telemetryClient);
