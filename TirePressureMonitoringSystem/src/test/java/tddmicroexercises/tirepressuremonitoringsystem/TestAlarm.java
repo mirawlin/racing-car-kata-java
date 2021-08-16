@@ -10,5 +10,6 @@ public class TestAlarm {
     public void foo() {
         Alarm alarm = new Alarm();
         assertEquals(false, alarm.isAlarmOn());
+
     }
 }
